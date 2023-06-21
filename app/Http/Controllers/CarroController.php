@@ -62,9 +62,14 @@ class CarroController extends Controller
      * @param  \App\Models\Carro  $carro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carro $carro)
+    public function update(Request $request, int $id)
     {
-        //
+        $carro = $this->carro->find($id);
+
+        $carro = $carro->fill($request->all());
+        $carro->save();
+
+        return response()->json($carro, 200);
     }
 
     /**
@@ -73,8 +78,14 @@ class CarroController extends Controller
      * @param  \App\Models\Carro  $carro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Carro $carro)
+    public function destroy(int $id)
     {
-        //
+        $carro = $this->carro->find($id);
+
+        if($carro){
+            $carro->delete();
+
+            return response()->json('Carro deletado com sucesso');
+        }
     }
 }

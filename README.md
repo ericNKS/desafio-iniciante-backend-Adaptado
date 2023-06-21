@@ -1,34 +1,30 @@
-Desafio back-end para desenvolvedores iniciantes
+Api com objetivo de fixar aprendizado de API RestFull
 
-O Desafio
+Para rodar a API você deverá entrar na pasta do programa com o terminal e usar o comando 'php artisan serve' para rodar o aplicativo.
 
-Precisamos de uma API que sirva o back-end de uma aplicação de aluguel de carros. Essa API precisa ser capaz de:
+Consultas:
 
-    Cadastrar um carro/cliente
-    Editar um carro/cliente
-    Deletar um carro/cliente
-    Listar os carros/clientes
-    Obter informações de um carro/cliente por ID
+    As consultas são feitas utilizando o método GET
+    Se deseja buscar algum carro basta utilizar /carro/{id?}
+    Se quiser recuperar todos os carros do banco de dados o link é somente /carro.
+    O mesmo serve para os clientes. Se deseja buscar algum cliente em especifico basta utilizar o link /cliente/{id?}. Porém se deseja ter o retorno de todos os clientes basta utilizar /cliente.
 
-A entidade carro deve ter os seguintes campos:
+    Todas as consultas trazem consigo as classes que o objeto herda.
 
-    id -> Identificador do carro.
-    marca -> Marca do carro.
-    modelo -> Modelo do carro.
-    dataCadastro -> Data em que o carro foi cadastrado.
+Criação:
+    
+    As criações são feitas utilizando o método POST.
+    Para criar um novo carro basta utilizar o link /carro passando no corpo ro request a marca e o modelo.
+    Na criação de um novo cliente basta utilizar o link /cliente passando no corpo ro request o nome, o cpf(somente número), carro_id, data_nascimento(yyyy/mm/dd).
 
-A entidade cliente deve ter os seguintes campos:
+Atualização:
 
-    id -> Identificador do cliente.
-    nome -> Nome do cliente (máx. de 50 caracteres)
-    cpf -> CPF do cliente (deve ser único e não guardar pontos e traços).
-    carro -> Carro alugado pelo cliente.
-    dataNascimento -> Data de nascimento do cliente (formatada no padrão br: dd/MM/aaaa).
-    created_at -> Data de criação do cliente.
-    updated_at -> Data em que houve alteração no cliente.
+    Os update podem ser feito pelo método PUT ou PATCH. Sendo PUT ou PATCH, atualizar tudo e atualizar parte do objeto respectivamente.
+    As informações do carro podem ser atualizadas pelo link /carro/{id?} passando no corpo do request os atributos que deseja atualizar atributos.
+    O mesmo serve para cliente, para ser atualizado basta utilizar o link /cliente/{id?} passando no corpo do request os atributos que deseja atualizar atributos.
 
-Você pode utilizar qualquer banco, desde que ele seja SQL.
-Requisitos
+Remoção:
 
-    Todas as respostas precisam ser retornadas no formato JSON.
-    Crie um README.md com as informações de como usar sua aplicação. (Como executar, quais são as rotas etc)
+    É necessário utilizar o método DELETE.
+    Para fazer a remoção do objeto bastar passar o link /objeto/{id?}.
+    Ex: /carro/3

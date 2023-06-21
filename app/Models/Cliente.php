@@ -27,7 +27,7 @@ class Cliente extends Model
             'nome.max' => 'O nome so pode ter no máximo 50 caracteres',
             'cpf.unique' => 'O CPF já existe no banco de dados',
             'exists' => 'O :attribute não existe no banco de dados',
-            'data_nascimento.date' => 'A data de nascimento não está no formato valido (yyyy-mm-dd)'
+            'data_nascimento.date' => 'A data de nascimento não está no formato valido (yyyy/mm/dd)'
         ];
     }
 

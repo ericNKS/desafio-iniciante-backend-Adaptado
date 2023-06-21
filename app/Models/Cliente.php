@@ -9,7 +9,13 @@ class Cliente extends Model
 {
     use HasFactory;
     protected $fillable = ['nome', 'cpf', 'carro_id', 'data_nascimento'];
+    protected $appends = ['data_nascimento'];
 
+    public function getDataNascimentoAttribute()
+    {
+        return date('d/m/Y', strtotime($this->attributes['data_nascimento']));
+        
+    }
     public function rules()
     {
         return [

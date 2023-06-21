@@ -40,6 +40,7 @@ class ClienteController extends Controller
         $cliente->carro_id = $request->carro_id;
         $dataFormatada = $request->data_nascimento;
         $cliente->data_nascimento = $dataFormatada;
+        $cliente->getDataNascimentoAttribute();
         $cliente->save();
 
         return response()->json($cliente);
